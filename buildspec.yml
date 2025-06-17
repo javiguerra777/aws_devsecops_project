@@ -9,4 +9,4 @@ phases:
   build:
     commands:
       - echo "TOKEN length ${#TOKEN}"
-      - mvn verify sonar:sonar -Dsonar.projectKey=javaprojectaws -Dsonar.organization=gibbsorganization -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$TOKEN 
+      - mvn verify sonar:sonar -Dsonar.projectKey=gibbsorganization -Dsonar.organization=gibbsorganization -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$TOKEN 
