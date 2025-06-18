@@ -2,6 +2,7 @@ version: 0.2
 env:
     secrets-manager:
       TOKEN: firstSecret:tokenForSonar
+      SNYK_TOKEN: firstSecret:tokenForSnyk
 phases:
   install:
     runtime-versions:
@@ -14,6 +15,10 @@ phases:
         quality_status=$(curl -s -u $TOKEN: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gibbsorganization | jq -r '.projectStatus.status')
         echo "SonarCloud analysistatus is $quality_status"; 
         if [ $quality_status = "ERROR" ] ; then exit 1;fi
+      - |-
+        apt-get update
+        apt-get -y install maven
+        mvn snyk:test fn
       - |-
         apt-get update
         apt-get -y install wget
