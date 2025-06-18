@@ -18,7 +18,7 @@ phases:
       - |-
         apt-get update
         apt-get -y install maven
-        mvn snyk:test fn
+        mvn snyk:test -fn
       - |-
         apt-get update
         apt-get -y install wget
